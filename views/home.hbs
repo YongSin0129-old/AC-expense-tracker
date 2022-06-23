@@ -1,1 +1,10 @@
 <h1>Example App: Home</h1>
+
+{{#each records}}
+{{#with this}}
+<h3>{{name}}</h3>
+<h3>{{date}}</h3>
+<h3>{{amount}}</h3>
+
+{{/with}}
+{{/each}}
