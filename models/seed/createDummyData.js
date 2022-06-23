@@ -1,6 +1,7 @@
 const usersModel = require('../users')
 const categoriesModel = require('../categories')
 const recordsModel = require('../records')
+const bcrypt = require('bcryptjs')
 const mongoose = require('../../config/mongoose')
 const db = mongoose.connection
 
@@ -29,6 +30,9 @@ db.once('open', async () => {
 async function createUsersAndRecords () {
   // 將 SEED_USERS 內的所有使用者做一個迴圈 ， 在資料庫建立使用者
   for (const SEED_USER of SEED_USERS) {
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(SEED_USER.password, salt)
+    SEED_USER.password = hash
     const user = await usersModel.create(SEED_USER)
     const userId = user._id
     // 將使用者本身的記帳記錄建立到資料庫內
