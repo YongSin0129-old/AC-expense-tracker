@@ -5,6 +5,13 @@
 <h3>{{name}}</h3>
 <h3>{{date}}</h3>
 <h3>{{amount}}</h3>
+<h3>{{icon}}</h3>
+{{/with}}
+{{/each}}
 
+{{#each categories}}
+{{#with this}}
+<h3>{{name}}</h3>
+<h3>{{icon}}</h3>
 {{/with}}
 {{/each}}
