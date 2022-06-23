@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
       return category._id.equals(record.categoryId)
     }).icon
   })
-  res.render('home', {
+  res.render('index', {
     records,
     categories
   })

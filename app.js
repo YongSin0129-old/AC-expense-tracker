@@ -15,6 +15,8 @@ app.set('views', './views')
 
 // load bodyParser
 app.use(express.urlencoded({ extended: true }))
+// 載入 public
+app.use(express.static('public'))
 
 // cookie-session
 app.use(

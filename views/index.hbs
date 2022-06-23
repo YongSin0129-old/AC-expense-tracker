@@ -1,0 +1,43 @@
+<div class="container text-center">
+
+  <select class="mt-3 w-50" onchange="location.href=this.options[this.selectedIndex].value">
+    <option>類別</option>
+    {{#each categories}}
+    {{#with this}}
+    <option value="/?category={{name}}">{{name}}</option>
+    {{/with}}
+    {{/each}}
+  </select>
+
+  <h1 class="mt-3">總金額 : <span>30000</span></h1>
+
+  <ul class="list-group list-group-flush">
+    {{#each records}}
+    {{#with this}}
+    <li class="list-group-item mt-2">
+      <div class="row align-items-center">
+        <div class="col-2 text-end">
+          <i class="{{icon}}" style="font-size:3rem"></i>
+        </div>
+        <div class="col-4 text-start align-items-center">
+          <h4>{{name}}</h4>
+          <h6>{{date}}</h6>
+        </div>
+        <div class="col-2 text-end align-items-center">
+          <h5>{{amount}}</h5>
+        </div>
+        <div class="col d-flex" style="justify-content:end;">
+          <a href="/records/{{_id}}/edit" class="btn btn-outline-info m-1">修改</a>
+          <form action='/records/{{_id}}?_method=DELETE' method='POST'>
+            <button type='submit' class="btn btn-outline-danger m-1">刪除</button>
+          </form>
+        </div>
+
+      </div>
+    </li>
+    {{/with}}
+    {{/each}}
+  </ul>
+  <a href="/records/new" class="mt-3 btn btn-outline-success" style="font-size:2rem">新增支出</a>
+
+</div>
