@@ -36,4 +36,13 @@ router.get('/:id/edit', async (req, res, next) => {
   res.render('edit', { selectedRecord, categories, categoryName })
 })
 
+// 刪除 record
+router.delete('/:id', async (req, res) => {
+  const userId = req.user._id
+  const recordId = req.params.id
+  await recordsModel.deleteOne({ _id: recordId, userId })
+  req.flash('success_msg', '成功刪除餐廳')
+  res.redirect('/')
+})
+
 module.exports = router
