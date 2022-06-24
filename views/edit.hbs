@@ -2,17 +2,17 @@
   <section class="create">
     <h1 class="mt-3"> <span>* 必填欄位 </span> 請修改你的支出 </h1>
 
-    <form action='/restaurants/{{_id}}?_method=PUT' method="POST">
+    <form action='/records/{{selectedRecord._id}}?_method=PUT' method="POST">
       <ul class="list-group list-group-flush" style="align-items: center;">
         <li class="list-group-item mt-2 w-50">
           <span>名稱* :</span>
-          <input type="text" class="input-name form-control ms-3" placeholder="請輸入名稱" style="display: inline;"
+          <input type="text" name="name" class="input-name form-control ms-3" placeholder="請輸入名稱" style="display: inline;"
             value='{{selectedRecord.name}}' required>
         </li>
 
         <li class="list-group-item mt-2 w-50">
           <span>日期* :</span>
-          <input type="date" class="input-data form-control ms-3" style="display: inline;"
+          <input type="date" name="date" class="input-data form-control ms-3" style="display: inline;"
             value='{{selectedRecord.date}}'>
         </li>
 
@@ -28,7 +28,7 @@
 
         <li class="list-group-item mt-2 w-50">
           <span>金額* :</span>
-          <input type="number" class="input-amount form-control ms-3" style="display: inline;" min="0" step="10"
+          <input type="number" name="amount" class="input-amount form-control ms-3" style="display: inline;" min="0" step="10"
             value="{{selectedRecord.amount}}">
         </li>
 

@@ -13,7 +13,7 @@ router.post('', async (req, res) => {
   const userId = req.user._id
   req.body.userId = userId
   await recordsModel.create(req.body)
-  req.flash('success_msg', '成功新增餐廳')
+  req.flash('success_msg', '成功新增記錄')
   res.redirect('/')
 })
 
@@ -36,12 +36,22 @@ router.get('/:id/edit', async (req, res, next) => {
   res.render('edit', { selectedRecord, categories, categoryName })
 })
 
+router.put('/:id', async (req, res) => {
+  const userId = req.user._id
+  const recordId = req.params.id
+  const record = await recordsModel.findOne({ _id: recordId, userId })
+  const revisedRecord = Object.assign(record, req.body)
+  await revisedRecord.save()
+  req.flash('success_msg', '成功修改記錄')
+  res.redirect('/')
+})
+
 // 刪除 record
 router.delete('/:id', async (req, res) => {
   const userId = req.user._id
   const recordId = req.params.id
   await recordsModel.deleteOne({ _id: recordId, userId })
-  req.flash('success_msg', '成功刪除餐廳')
+  req.flash('success_msg', '成功刪除記錄')
   res.redirect('/')
 })
 
