@@ -13,10 +13,10 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
 app.set('view engine', 'hbs')
 app.set('views', './views')
 
-// load bodyParser
-app.use(express.urlencoded({ extended: true }))
 // 載入 public
 app.use(express.static('public'))
+// load bodyParser
+app.use(express.urlencoded({ extended: true }))
 
 // cookie-session
 app.use(

@@ -1,0 +1,23 @@
+@import "./reset.scss";
+
+// * {
+//   border: 1px solid black
+// }
+
+section.create {
+  h1 {
+    position: relative;
+  }
+
+  h1 span {
+    position: absolute;
+    left: 5rem;
+    vertical-align: super;
+    font-size: 1rem;
+    color: red;
+  }
+
+  .list-group-item input {
+    width: 50%;
+  }
+}

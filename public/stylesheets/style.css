@@ -71,3 +71,17 @@ input:required {
 input:invalid {
   box-shadow: none;
 }
+
+section.create h1 {
+  position: relative;
+}
+section.create h1 span {
+  position: absolute;
+  left: 5rem;
+  vertical-align: super;
+  font-size: 1rem;
+  color: red;
+}
+section.create .list-group-item input {
+  width: 50%;
+}
