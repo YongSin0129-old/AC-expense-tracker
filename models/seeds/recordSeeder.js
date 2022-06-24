@@ -12,14 +12,11 @@ db.once('open', async () => {
   try {
     // 先將 dataBase 清空再創造新的資料
     await usersModel.deleteMany()
-    await categoriesModel.deleteMany()
     await recordsModel.deleteMany()
-    console.log('delete all data in database')
-    // const { name, email, password } = SEED_USER2
-    await categoriesModel.create(SEED_CATEGORY)
+    console.log('delete all users and records in database')
     await createUsersAndRecords()
-    console.log('create New dummyData Successfully')
-    console.log('database closed')
+    console.log('create all records Successfully')
+    console.log('process closed')
     process.exit()
   } catch (error) {
     console.log(error)
@@ -46,8 +43,6 @@ async function createUsersAndRecords () {
     }
   }
 }
-
-// 以下為假資料
 
 const SEED_USERS = [
   {
@@ -94,12 +89,4 @@ const SEED_USERS = [
       }
     ]
   }
-]
-
-const SEED_CATEGORY = [
-  { name: '家居物業', icon: 'fa-solid fa-house' },
-  { name: '交通出行', icon: 'fa-solid fa-van-shuttle' },
-  { name: '休閒娛樂', icon: 'fa-solid fa-face-grin-beam' },
-  { name: '餐飲食品', icon: 'fa-solid fa-utensils' },
-  { name: '其他', icon: 'fa-solid fa-pen' }
 ]

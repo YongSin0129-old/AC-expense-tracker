@@ -11,8 +11,8 @@
 {{/if}}
 
   <select class="mt-3 w-50" onchange="location.href=this.options[this.selectedIndex].value">
-    <option>類別</option>
-    <option value="/">無篩選</option>
+    <option>類別篩選</option>
+    <option value="/">全選</option>
     {{#each categories}}
     {{#with this}}
     <option value="/?category={{_id}}&name={{name}}">{{name}}</option>
