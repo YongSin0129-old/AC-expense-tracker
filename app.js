@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars').engine
+const methodOverride = require('method-override')
 const session = require('express-session')
 const router = require('./routes')
 require('./config/mongoose')
@@ -17,6 +18,8 @@ app.set('views', './views')
 app.use(express.static('public'))
 // load bodyParser
 app.use(express.urlencoded({ extended: true }))
+// 載入 methodOverride
+app.use(methodOverride('_method'))
 
 // cookie-session
 app.use(
