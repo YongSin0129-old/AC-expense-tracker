@@ -50,5 +50,5 @@ app.use((req, res, next) => {
 app.use(router)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`expense-tracker listening on port ${port}`)
 })
