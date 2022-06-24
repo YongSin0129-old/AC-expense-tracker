@@ -6,8 +6,13 @@ const categoriesModel = require('../../models/categories')
 // 首頁
 router.get('/', async (req, res) => {
   const userId = req.user._id
-  const records = await recordsModel.find({ userId }).lean()
   const categories = await categoriesModel.find().lean()
+  const filterMethod = req.query.name
+  const categoryId = req.query.category
+  let records = await recordsModel.find({ userId }).lean()
+  if (filterMethod) {
+    records = records.filter(record => record.categoryId.equals(categoryId))
+  }
 
   records.forEach(record => {
     record.date = record.date
@@ -21,11 +26,11 @@ router.get('/', async (req, res) => {
   })
 
   const totalAmount = records.reduce((pre, cur) => pre + cur.amount, 0)
-
   res.render('index', {
     records,
     categories,
-    totalAmount
+    totalAmount,
+    filterMethod
   })
 })
 

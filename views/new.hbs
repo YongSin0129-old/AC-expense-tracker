@@ -10,13 +10,13 @@
 
         <li class="list-group-item mt-2 w-50">
           <span>日期* :</span>
-          <input type="date" name="date" class="input-data form-control ms-3" style="display: inline;">
+          <input type="date" name="date" class="input-data form-control ms-3" style="display: inline;" required>
         </li>
 
         <li class="list-group-item mt-2 w-50">
           <span>類別* :</span>
-          <select class="form-select w-50 ms-3" name="categoryId" style="display: inline;">
-            <option selected>請選擇類別</option>
+          <select class="form-select w-50 ms-3" name="categoryId" style="display: inline;" required>
+            <option value="" selected>請選擇類別</option>
             {{#each categories}}
             <option value="{{this._id}}">{{this.name}}</option>
             {{/each}}
@@ -25,8 +25,7 @@
 
         <li class="list-group-item mt-2 w-50">
           <span>金額* :</span>
-          <input type="number" name="amount" class="input-amount form-control ms-3" style="display: inline;" min="0" step="10"
-            value="0">
+          <input type="number" name="amount" class="input-amount form-control ms-3" style="display: inline;" min="0" value="0" required>
         </li>
 
       </ul>
